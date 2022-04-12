@@ -9,28 +9,33 @@ namespace SalesWebMvc.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "{0} required")]
-        [StringLength(60, MinimumLength = 3, ErrorMessage = "{0} size should be between {2} and {1}")]
+        [Required(ErrorMessage = "{0} Inválido")]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Caracteres informados não reconhecido como {0} valido")]
+        [Display(Name = "Funcionário")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "{0} required")]
-        [EmailAddress(ErrorMessage = "Enter a valid email")]
+        [Required(ErrorMessage = "{0} Inválido")]
+        [EmailAddress(ErrorMessage = "Informe um {0} valido")]
+        [Display(Name = "E-mail")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "{0} required")]
-        [Display(Name = "Birth Date")]
+        [Required(ErrorMessage = "{0} Inválido")]
+        [Display(Name = "Aniversário")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime BirthDate { get; set; }
 
-        [Required(ErrorMessage = "{0} required")]
-        [Range(100.0, 50000.0, ErrorMessage = "{0} must be from {1} to {2}")]
-        [Display(Name = "Base Salary")]
+        [Required(ErrorMessage = "{0} Inválido")]
+        [Range(100.0, 50000.0, ErrorMessage = "{0} Salário deve ser entre {1} e {2}")]
+        [Display(Name = "Base Salárial")]
         [DisplayFormat(DataFormatString = "{0:F2}")]
         public double BaseSalary { get; set; }
-
+       
+        [Display(Name = "Departamento")]
         public Department Department { get; set; }
+
+        [Display(Name = "Departamento")]
         public int DepartmentId { get; set; }
 
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
